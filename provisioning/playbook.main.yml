@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  become_method: sudo
+  connection: local
+  roles:
+    - { role: ansible }
+    #- { role: docker }
+  vars:
+    ansible_container: true
+    ansible_container_engines:
+      - docker
+
+    docker_images:
+      - mariadb:latest
+      - golang:latest
+
+  tasks:
+    #- name: Create a redis container
+    #  docker_container:
+    #    name: mariadb
+    #    image: mariadb:latest
+    #    state: present
+    #    env:
+    #      MYSQL_ROOT_PASSWORD: money
+    #      MYSQL_DATABASE: cryptotrader
+    #    exposed_ports:
+    #      - 3306

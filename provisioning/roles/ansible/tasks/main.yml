@@ -1,0 +1,35 @@
+---
+- name: install utilities and dependencies Debian
+  package: "name={{ item }}"
+  when: ansible_os_family == "Debian"
+  with_items:
+    - git
+    - libffi-dev
+    - python3-pip
+
+- name: install utilities and dependencies RedHat
+  package: "name={{ item }}"
+  when: ansible_os_family == "RedHat"
+  with_items:
+    - gcc
+    - git
+    - libffi-devel
+    - python-pip
+    - openssl-devel
+
+- name: install Markupsafe and Ansible via pip
+  pip: "name={{ item }}"
+  become: true
+  with_items:
+    - ansible
+
+- name: create /etc/ansible if needed
+  file:
+    path: /etc/ansible
+    state: directory
+  become: true
+
+- name: install ansible container
+  pip: "name=ansible-container[{{ ansible_container_engines | join(', ') }}]"
+  become: true
+  when: ansible_container

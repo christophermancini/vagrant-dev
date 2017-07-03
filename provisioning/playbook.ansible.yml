@@ -1,0 +1,6 @@
+---
+- hosts: ansible.vagrant-dev
+  become_method: sudo
+  roles:
+    - { role: ansible }
+  vars:

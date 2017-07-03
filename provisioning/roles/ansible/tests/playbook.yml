@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  become_method: sudo
+  connection: local
+  roles:
+    - { role: this_role }
+  vars:
+    this_role_varname: 'some value'
+  tasks:
+  #- name: A task to execute to confirm that role was successful
+  #  command: some script or something?

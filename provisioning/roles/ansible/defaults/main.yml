@@ -1,0 +1,6 @@
+---
+ansible_container: false
+ansible_container_engines:
+  - docker
+  - k8s
+  - openshift

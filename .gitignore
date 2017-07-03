@@ -1,0 +1,6 @@
+*.retry
+.DS_Store
+.vagrant
+.vscode
+Vagrantfile
+extra_vars.json

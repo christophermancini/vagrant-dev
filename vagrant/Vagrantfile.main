@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #main.vm.box = "bento/ubuntu-14.04"
     #main.vm.box = "bento/ubuntu-16.04"
 
-    main.vm.synced_folder "../code/", "/home/vagrant/code", mount_options: ["dmode=777,fmode=777"]
+    main.vm.synced_folder CODESHARE, "/home/vagrant/code", mount_options: ["dmode=777,fmode=777"]
 
     ##################
     # Virtualization #

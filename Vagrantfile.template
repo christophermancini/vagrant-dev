@@ -8,6 +8,9 @@ VAGRANTFILE_API_VERSION = "2"
 # @see http://docs.ansible.com/ansible/playbooks_variables.html#passing-variables-on-the-command-line
 EXTRAVARS = ENV['EXTRA_VARS'] || "@/vagrant/extra_vars.json"
 
+# CODESHARE is the directory where you checkout all your code that you want accessible from the guest VMs
+CODESHARE = "../code/"
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Base Vagrant boxes from Chef
   # @see https://github.com/chef/bento#bento

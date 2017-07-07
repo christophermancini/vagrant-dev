@@ -2,9 +2,7 @@
 - hosts: localhost
   become_method: sudo
   connection: local
-  roles:
-    - { role: ansible }
-    #- { role: docker }
+
   vars:
     ansible_container: true
     ansible_container_engines:
@@ -13,6 +11,11 @@
     docker_images:
       - mariadb:latest
       - golang:latest
+
+  roles:
+    - { role: geerlingguy.ntp, become: true }
+    - { role: christophermancini.docker }
+    #- { role: ansible }
 
   tasks:
     #- name: Create a redis container

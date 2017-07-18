@@ -1,3 +1,6 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 # main box for orchestration and testing
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|

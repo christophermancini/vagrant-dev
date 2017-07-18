@@ -1,5 +1,5 @@
 .PHONY: init
 
 init:
-	@rsync -aq Vagrantfile.template Vagrantfile
-	@rsync -aq extra_vars.json.template extra_vars.json
+	@rsync -aq template.Vagrantfile Vagrantfile
+	@rsync -aq template.extra_vars.json extra_vars.json

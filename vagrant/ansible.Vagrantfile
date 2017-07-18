@@ -1,3 +1,6 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 # ansible
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|

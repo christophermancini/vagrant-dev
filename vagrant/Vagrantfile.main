@@ -25,6 +25,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     main.vm.network :forwarded_port, guest: 80, host: 8080    # HTTP
     main.vm.network :forwarded_port, guest: 443, host: 8443   # HTTPS
     main.vm.network :forwarded_port, guest: 3306, host: 3306  # MariaDB
+    main.vm.network :forwarded_port, guest: 1313, host: 1313  # HUGO
+    main.vm.network :forwarded_port, guest: 5913, host: 5913  # HUGO
 
     ##################
     #  PROVISIONING  #

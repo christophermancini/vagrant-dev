@@ -14,7 +14,8 @@
 
   roles:
     - { role: geerlingguy.ntp, become: true }
-    - { role: christophermancini.docker }
+    - { role: geerlingguy.nodejs }
+    #- { role: christophermancini.docker }
     #- { role: ansible }
 
   tasks:

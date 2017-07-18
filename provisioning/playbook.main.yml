@@ -8,17 +8,23 @@
     ansible_container_engines:
       - docker
 
-    docker_images:
-      - mariadb:latest
-      - golang:latest
+    #docker_images:
+    #  - mariadb:latest
+    #  - golang:latest
 
   roles:
     - { role: geerlingguy.ntp, become: true }
     - { role: geerlingguy.nodejs }
-    #- { role: christophermancini.docker }
+    - { role: christophermancini.docker }
     #- { role: ansible }
 
   tasks:
+    - name: Add Vagrant user to Docker Group
+      user:
+        name: vagrant
+        groups: docker
+        append: yes
+
     #- name: Create a redis container
     #  docker_container:
     #    name: mariadb

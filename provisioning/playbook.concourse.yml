@@ -5,20 +5,21 @@
 
   roles:
     - { role: geerlingguy.ntp, become: true }
-    - { role: geerlingguy.nodejs }
     - { role: christophermancini.docker }
     - { role: joshualund.golang }
-    #- { role: ansible }
+    #- { role: ANXS.postgresql }
 
   vars:
     ansible_container: true
     ansible_container_engines:
       - docker
 
-    #docker_images:
+    docker_images:
+      - concourse/concourse-rc
     #  - mariadb:latest
     #  - golang:latest
 
+    #postgresql_version: 9.6
 
     go_tarball: "go1.9.1.linux-amd64.tar.gz"
     go_tarball_checksum: "sha256:07d81c6b6b4c2dcf1b5ef7c27aaebd3691cdb40548500941f92b221147c5d9c7"
@@ -29,12 +30,20 @@
       package: "name={{ item }}"
       with_items:
         - vim
+        - phantomjs
+
+#    - name: Add needed dependencies for bosh
+#      package: "name={{ item }}"
+#      when: ansible_os_family == "RedHat"
+#      with_items:
+#        - gcc
 
     - name: Add Vagrant user to Docker Group
       user:
         name: vagrant
         groups:
           - docker
+          - postgres
         append: yes
 
     - name: Add helper things to bashrc
@@ -43,3 +52,5 @@
         line: "{{ item }}"
       with_items:
         - "alias ll='ls -al --color=auto'"
+        - "export GOPATH=$GOPATH:~/code/go:~/code/concourse"
+        - "export PATH=$PATH:~/go/bin:~/code/go/bin:~/code/concourse/bin:/usr/lib/postgresql/9.6/bin"

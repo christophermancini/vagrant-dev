@@ -8,3 +8,4 @@
 - src: christophermancini.docker
 - src: geerlingguy.ntp
 - src: geerlingguy.nodejs
+- src: ANXS.postgresql

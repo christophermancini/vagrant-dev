@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "main" do |main|
     main.vm.hostname = "main.vagrant-dev"
 
-    #main.vm.box = "bento/ubuntu-14.04"
+    # Box/OS override
     #main.vm.box = "bento/ubuntu-16.04"
 
     main.vm.synced_folder CODESHARE, "/home/vagrant/code", mount_options: ["dmode=777,fmode=777"]
@@ -29,7 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     main.vm.network :forwarded_port, guest: 443, host: 8443   # HTTPS
     main.vm.network :forwarded_port, guest: 3306, host: 3306  # MariaDB
     main.vm.network :forwarded_port, guest: 1313, host: 1313  # HUGO
-    main.vm.network :forwarded_port, guest: 5913, host: 5913  # HUGO
 
     ##################
     #  PROVISIONING  #

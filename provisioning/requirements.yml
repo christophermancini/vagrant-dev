@@ -9,3 +9,5 @@
 - src: geerlingguy.ntp
 - src: geerlingguy.nodejs
 - src: ANXS.postgresql
+- src: williamyeh.oracle-java
+- src: telusdigital.mariadb

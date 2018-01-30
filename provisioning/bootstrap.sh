@@ -80,7 +80,7 @@ then
     ######################################################################################
 
     If you need to run the playbook manually, use:
-    \t`sudo ansible-playbook /vagrant/provisioning/%s.yml -v --extra-vars="%s"`
+    \t`sudo ansible-playbook /vagrant/provisioning/playbook.%s.yml -v --extra-vars="%s"`
     ' ${VAGRANT_DEV_BOX} "${1}"
 else
     ansible-playbook /vagrant/provisioning/playbook.${VAGRANT_DEV_BOX}.yml --extra-vars="${1}"

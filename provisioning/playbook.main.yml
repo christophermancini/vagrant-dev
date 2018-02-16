@@ -8,7 +8,10 @@
     - { role: geerlingguy.nodejs }
     - { role: christophermancini.docker }
     - { role: joshualund.golang }
-    - { role: telusdigital.mariadb, mariadb_server: yes, database_password: "vagrant", project: "wdwdb" }
+    - { role: telusdigital.mariadb, mariadb_server: yes, database_name: "vagrant", database_password: "vagrant", project: "vagrant" }
+    # sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys
+    # sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B725097B3ACC3965
+    # sudo apt-get update
 
   vars:
     ansible_container: true
@@ -42,3 +45,19 @@
         line: "{{ item }}"
       with_items:
         - "alias ll='ls -al --color=auto'"
+
+    - name: Create Database
+      mysql_db:
+        state: present
+        name: "wdwdb"
+
+    - name: Create Database User
+      mysql_user:
+        state: present
+        name: "wdwdbuser"
+        password: "wdwdbforme"
+        priv: "wdwdb.*:ALL"
+        host: "{{ item }}"
+      with_items:
+        - localhost
+        - "%"
